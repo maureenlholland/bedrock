@@ -408,6 +408,58 @@ class TestWhatsNew(TestCase):
 
     # end 88.0 whatsnew tests
 
+    # begin 90.0 whatsnew tests
+
+    def test_fx_90_0_0_en(self, render_mock):
+        """Should use standard whatsnew template for 90.0 in English locales"""
+        req = self.rf.get('/firefox/whatsnew/')
+        req.locale = 'en-US'
+        self.view(req, version='90.0')
+        template = render_mock.call_args[0][1]
+        assert template == ['firefox/whatsnew/index-account.html']
+
+    def test_fx_90_0_0_de(self, render_mock):
+        """Should use VPN template for 90.0 in German"""
+        req = self.rf.get('/firefox/whatsnew/')
+        req.locale = 'de'
+        self.view(req, version='90.0')
+        template = render_mock.call_args[0][1]
+        assert template == ['firefox/whatsnew/whatsnew-fx90-eu.html']
+
+    def test_fx_90_0_0_fr(self, render_mock):
+        """Should use VPN template for 90.0 in French"""
+        req = self.rf.get('/firefox/whatsnew/')
+        req.locale = 'fr'
+        self.view(req, version='90.0')
+        template = render_mock.call_args[0][1]
+        assert template == ['firefox/whatsnew/whatsnew-fx90-eu.html']
+
+    def test_fx_90_0_0_it(self, render_mock):
+        """Should use VPN template for 90.0 in French"""
+        req = self.rf.get('/firefox/whatsnew/')
+        req.locale = 'it'
+        self.view(req, version='90.0')
+        template = render_mock.call_args[0][1]
+        assert template == ['firefox/whatsnew/whatsnew-fx90-eu.html']
+
+    def test_fx_90_0_0_nl(self, render_mock):
+        """Should use VPN template for 90.0 in French"""
+        req = self.rf.get('/firefox/whatsnew/')
+        req.locale = 'nl'
+        self.view(req, version='90.0')
+        template = render_mock.call_args[0][1]
+        assert template == ['firefox/whatsnew/whatsnew-fx90-eu.html']
+
+    def test_fx_90_0_0_es(self, render_mock):
+        """Should use VPN template for 90.0 in French"""
+        req = self.rf.get('/firefox/whatsnew/')
+        req.locale = 'es-ES'
+        self.view(req, version='90.0')
+        template = render_mock.call_args[0][1]
+        assert template == ['firefox/whatsnew/whatsnew-fx90-eu.html']
+
+    # end 90.0 whatsnew tests
+
 
 @patch('bedrock.firefox.views.l10n_utils.render', return_value=HttpResponse())
 class TestWhatsNewFirefoxLite(TestCase):
