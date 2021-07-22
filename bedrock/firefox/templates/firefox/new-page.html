@@ -1,0 +1,21 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends 'firefox/base/base-protocol.html' %}
+
+{% block page_title %}Test{% endblock %}
+{% block page_desc %}Testing Firefox Theme{% endblock %}
+
+{% block page_css %}
+  {{ css_bundle() }}
+{% endblock %}
+
+{% block content %}
+  <main>
+  </main>
+{% endblock %}
+
+{% block js %}
+  {{ js_bundle() }}
+{% endblock %}
