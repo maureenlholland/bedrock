@@ -183,4 +183,6 @@ urlpatterns = (
 
     # Issue 9957
     page('firefox/more/misinformation', 'firefox/more/misinformation.html', ftl_files='firefox/more/misinformation'),
+
+    page('firefox/new-page', 'firefox/new-page.html'),
 )

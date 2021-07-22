@@ -775,6 +775,12 @@
     },
     {
       "files": [
+        "css/firefox/new-page.scss"
+      ],
+      "name": "new-page"
+    },
+    {
+      "files": [
         "css/firefox/sticky-promo.scss",
         "css/firefox/browsers/quantum.scss"
       ],

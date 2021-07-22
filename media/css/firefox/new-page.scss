@@ -1,0 +1,16 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+// Only necessary if the page includes protocol components.
+// Must import components from macros-protocol.html to html page.
+// Include css component imports under lib
+// Update relative path as required (protocol is at root of media folder).
+$image-path: '/media/protocol/img';
+$brand-theme: 'firefox';
+
+@import '../../protocol/css/includes/lib';
+
+@import '../../protocol/css/components/hero';
+@import '../../protocol/css/components/call-out';
+@import '../../protocol/css/components/zap';
