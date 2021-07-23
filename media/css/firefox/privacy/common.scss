@@ -7,6 +7,7 @@ $font-path: '/media/fonts';
 $image-path: '/media/protocol/img';
 
 @import '../../../protocol/css/includes/lib';
+@debug "brand in common after import: #{$brand-theme}";
 @import '../../../protocol/css/components/call-out';
 @import '../../../protocol/css/components/feature-card';
 @import '../../../protocol/css/components/hero';
