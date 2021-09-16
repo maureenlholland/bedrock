@@ -4,7 +4,7 @@
   "description": "Making mozilla.org awesome, one pebble at a time",
   "private": true,
   "dependencies": {
-    "@mozilla-protocol/core": "14.0.3",
+    "@mozilla-protocol/core": "maureenlholland/protocol#723-update-logo-mixins",
     "@mozilla-protocol/eslint-config": "^1.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "9.0.1",
