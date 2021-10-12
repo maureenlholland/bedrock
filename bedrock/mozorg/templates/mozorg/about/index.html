@@ -19,6 +19,7 @@
 {% endblock %}
 
 {% block content %}
+<div id="svelte-app"></div>
 <section class="mzp-c-hero t-mission" {% if variant %}data-variant="{{ variant }}"{% endif%}>
   <div class="mzp-l-content">
     <div class="mzp-c-hero-body">
@@ -183,4 +184,5 @@
 
 {% block js %}
   {{ js_bundle('about') }}
+  {{ js_bundle('svelte') }}
 {% endblock %}
