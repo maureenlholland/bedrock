@@ -1,0 +1,62 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends 'mozorg/about-base.html' %}
+
+{% block page_title %}{{ ftl('about-learn-about-mozilla') }}{% endblock %}
+{% block page_desc %}{{ ftl('about-mozilla-makes-browsers-apps-desc') }}{% endblock %}
+
+{% block page_css %}
+  {{ css_bundle('test-frameworks') }}
+{% endblock %}
+
+{% block content %}
+  <main class="mzp-l-content">
+   <h1>{{ ftl('about-mozilla-makes-browsers-apps') }}</h1>
+   <h2>What is a front-end framework?</h2>
+   <p>Web Components use three main technologies to create custom, reusable, framework-agnostic HTML elements: custom elements API, shadow DOM, and HTML templates or slots.</p>
+   <p>Web Components are still pretty low level and it would be a steep learning curve to use them without a framework at this time.</p>
+   <p>Web Component frameworks abstract away the boilerplate of Web Component development and include reactivity but fall short on data-binding and state management when compared to more established Javascript frameworks.</p>
+   <p>The increased power of Javascript frameworks comes with a heavier bundle size cost.</p>
+   <section class="mzp-c-emphasis-box">
+    <p>How much state management do we need in Bedrock?</p>
+    <p>Do we want to use web components at all?</p>
+    <p>What are the best options for passing translations?</p>
+   </section>
+   <h3>Web Component Framework</h3>
+   <ul class="mzp-u-list-styled">
+    <li>Lit</li>
+    <li>Slim.js</li>
+    <li>Hybrids</li>
+   </ul>
+   <h3>Javascript Framework</h3>
+   <ul class="mzp-u-list-styled">
+    <li>Svelte</li>
+    <li>Vue</li>
+    <li>React</li>
+   </ul>
+   <h2>Why do we want one?</h2>
+   <p>We want to write less code that is easier to reason about and that we can reuse or throw away as needed.</p>
+   <h2>Requirements</h2>
+   <ul class="mzp-u-list-styled">
+    <li>Manages localized strings with Fluent</li>
+    <li>Progressive enhancement (page still loads without js)</li>
+    <li>Minimal impact on page load and rendering speed</li>
+    <li>Stable, good quality maintenance</li>
+   </ul>
+   <h2>Svelte</h2>
+   <div hidden
+    id="data-svelte"
+    data-target="test-svelte"
+    data-heading="{{ ftl('svelte-heading') }}"
+    data-button1="{{ ftl('svelte-button1') }}"
+    data-button2="{{ ftl('svelte-button2') }}"
+   ></div>
+   <div id='test-svelte'></div>
+  </main>
+{% endblock %}
+
+{% block js %}
+  {{ svelte_bundle('test-svelte') }}
+{% endblock %}

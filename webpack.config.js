@@ -137,6 +137,40 @@ const cssConfig = {
     ]
 };
 
+const svelteConfig = {
+    entry: () => path.resolve(__dirname, 'media', 'svelte/main.js'),
+    output: {
+        filename: 'svelte/test-svelte.js',
+        path: path.resolve(__dirname, 'assets/'),
+        publicPath: '/media/'
+    },
+    resolve: {
+        // see below for an explanation
+        alias: {
+            svelte: path.resolve('node_modules', 'svelte')
+        },
+        extensions: ['.mjs', '.js', '.svelte'],
+        // whut: https://webpack.js.org/configuration/resolve/#resolvemainfields
+        mainFields: ['svelte', 'browser', 'module', 'main']
+    },
+    module: {
+        rules: [
+            {
+                test: /\.svelte$/,
+                use: 'svelte-loader'
+            },
+            {
+                // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
+                test: /node_modules\/svelte\/.*\.mjs$/,
+                resolve: {
+                    fullySpecified: false
+                }
+            }
+        ]
+    },
+    plugins: []
+};
+
 // Plugin will only start when Webpack is in watch mode.
 const browserSync = new BrowserSyncPlugin({
     port: 8000,
@@ -159,5 +193,6 @@ const browserSync = new BrowserSyncPlugin({
 
 jsConfig.plugins.push(browserSync);
 cssConfig.plugins.push(browserSync);
+svelteConfig.plugins.push(browserSync);
 
-module.exports = [jsConfig, cssConfig];
+module.exports = [jsConfig, cssConfig, svelteConfig];

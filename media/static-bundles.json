@@ -32,6 +32,12 @@
     },
     {
       "files": [
+        "css/mozorg/test-frameworks.scss"
+      ],
+      "name": "test-frameworks"
+    },
+    {
+      "files": [
         "css/mozorg/about-forums.scss"
       ],
       "name": "about-forums"
@@ -1633,6 +1639,14 @@
         "js/products/vpn/cta-change-experiment.js"
       ],
       "name": "vpn-landing-page-cta-change-experiment"
+    }
+  ],
+  "svelte" : [
+    {
+      "files": [
+        "svelte/main.js"
+      ],
+      "name": "test-svelte"
     }
   ]
 }

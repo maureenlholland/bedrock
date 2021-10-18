@@ -115,6 +115,17 @@ def static(path):
 
 
 @library.global_function
+def svelte_bundle(name):
+    """Include a svelte bundle in the template.
+
+    Bundles are defined in the "media/static-bundles.json" file.
+    """
+    path = "svelte/{}.js".format(name)
+    path = staticfiles_storage.url(path)
+    return jinja2.Markup(JS_TEMPLATE % path)
+
+
+@library.global_function
 def js_bundle(name):
     """Include a JS bundle in the template.
 

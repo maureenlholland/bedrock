@@ -140,6 +140,7 @@
 {% endblock %}
 
 {% block js %}
+  {{ svelte_bundle('test-svelte') }}
   {% include 'includes/contentful/js.html' %}
   {{ js_bundle('home-contentful') }}
 
