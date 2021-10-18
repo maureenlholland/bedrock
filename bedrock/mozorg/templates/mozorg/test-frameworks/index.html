@@ -13,37 +13,15 @@
 
 {% block content %}
   <main class="mzp-l-content">
-   <h1>{{ ftl('about-mozilla-makes-browsers-apps') }}</h1>
-   <h2>What is a front-end framework?</h2>
-   <p>Web Components use three main technologies to create custom, reusable, framework-agnostic HTML elements: custom elements API, shadow DOM, and HTML templates or slots.</p>
-   <p>Web Components are still pretty low level and it would be a steep learning curve to use them without a framework at this time.</p>
-   <p>Web Component frameworks abstract away the boilerplate of Web Component development and include reactivity but fall short on data-binding and state management when compared to more established Javascript frameworks.</p>
-   <p>The increased power of Javascript frameworks comes with a heavier bundle size cost.</p>
-   <section class="mzp-c-emphasis-box">
-    <p>How much state management do we need in Bedrock?</p>
-    <p>Do we want to use web components at all?</p>
-    <p>What are the best options for passing translations?</p>
-   </section>
-   <h3>Web Component Framework</h3>
-   <ul class="mzp-u-list-styled">
-    <li>Lit</li>
-    <li>Slim.js</li>
-    <li>Hybrids</li>
-   </ul>
-   <h3>Javascript Framework</h3>
-   <ul class="mzp-u-list-styled">
-    <li>Svelte</li>
-    <li>Vue</li>
-    <li>React</li>
-   </ul>
-   <h2>Why do we want one?</h2>
-   <p>We want to write less code that is easier to reason about and that we can reuse or throw away as needed.</p>
-   <h2>Requirements</h2>
-   <ul class="mzp-u-list-styled">
-    <li>Manages localized strings with Fluent</li>
-    <li>Progressive enhancement (page still loads without js)</li>
-    <li>Minimal impact on page load and rendering speed</li>
-    <li>Stable, good quality maintenance</li>
-   </ul>
+    <h1>Front-end framework Discussion</h1>
+    <section class="mzp-c-emphasis-box">
+      <p>How much state management do we need in Bedrock? How persistent does it need to be?</p>
+      <p>What are we getting here that we don't get from macros and includes?</p>
+      <p>If we want to use a framework, what are the best options for passing translations from Fluent?</p>
+     </section>
+   <h2>What are we talking about?</h2>
+   <p><strong>Web Components</strong> use three main technologies to create custom, reusable, framework-agnostic HTML elements: <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-api">custom elements API</a>, <a href="https://dom.spec.whatwg.org/#interface-shadowroot">shadow DOM</a>, and HTML <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">templates</a> / <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-slot-element">slots</a>.</p>
+   <p><strong>Web Component frameworks</strong> abstract away the boilerplate of Web Component development and include helpers for things like reactivity. Ex: <a href="https://lit.dev/docs/#what-is-it-like-to-develop-with-lit">Lit</a></p>
+   <p><strong>Javascript frameworks</strong> encourage app-based web development with dynamic, composable, interactive components. They can be used with or without Web Components. Ex: <a href="https://svelte.dev/tutorial/adding-data">Svelte</a></p>
   </main>
 {% endblock %}
