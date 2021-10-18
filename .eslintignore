@@ -1,3 +1,4 @@
 media/js/libs/**/*.js
 media/js/ie/libs/**/*.js
 media/svelte/**/*.js
+media/js/mozorg/test-frameworks/**/*.js

@@ -138,7 +138,7 @@ const cssConfig = {
 };
 
 const svelteConfig = {
-    entry: () => path.resolve(__dirname, 'media', 'svelte/main.js'),
+    entry: () => path.resolve(__dirname, 'media', 'svelte/apps/Vote/main.js'),
     output: {
         filename: 'svelte/test-svelte.js',
         path: path.resolve(__dirname, 'assets/'),

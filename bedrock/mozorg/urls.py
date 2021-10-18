@@ -13,7 +13,11 @@ from .util import page
 
 urlpatterns = (
     url(r"^$", views.home_view, name="mozorg.home"),
-    page("test-frameworks", "mozorg/test-frameworks.html", ftl_files=["mozorg/test-frameworks"]),
+    # test frameworks start
+    page("test-frameworks", "mozorg/test-frameworks/index.html", ftl_files=["mozorg/test-frameworks"]),
+    page("test-frameworks/svelte", "mozorg/test-frameworks/svelte.html", ftl_files=["mozorg/test-frameworks"]),
+    page("test-frameworks/web-components", "mozorg/test-frameworks/web-components.html", ftl_files=["mozorg/test-frameworks"]),
+    # test frameworks end
     page("about", "mozorg/about/index.html", ftl_files=["mozorg/about"]),
     page("about/manifesto", "mozorg/about/manifesto.html", ftl_files=["mozorg/about/manifesto"]),
     page("about/manifesto/details", "mozorg/about/manifesto-details.html", ftl_files=["mozorg/about/manifesto"]),

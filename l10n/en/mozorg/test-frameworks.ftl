@@ -4,6 +4,10 @@
 
 ### URL: https://www-dev.allizom.org/about/
 
+# Test frameworks
+test-frameworks-svelte = Svelte testing
+test-frameworks-web-components = Web Components testing
+
 # Svelte tests
 svelte-heading = How is it going
 svelte-button1 = Super

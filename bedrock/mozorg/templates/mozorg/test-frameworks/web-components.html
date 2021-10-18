@@ -1,0 +1,38 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+  # License, v. 2.0. If a copy of the MPL was not distributed with this
+  # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+ {% extends 'mozorg/about-base.html' %}
+
+ {% block page_title %}{{ ftl('test-frameworks-web-components') }}{% endblock %}
+
+ {% block content %}
+   <main class="mzp-l-content">
+   {#
+   Web Components
+   - need template/slot polyfill for IE
+   - shadow DOM styling separate from light DOM with a few exceptions (ie font)
+   #}
+    <vote-buttons>
+      <h2 slot="heading">{{ ftl('svelte-heading') }}</h2>
+      <span slot="button1">{{ ftl('svelte-button1') }}</span>
+      <span slot="button2">{{ ftl('svelte-button2') }}</span>
+    </vote-buttons>
+
+    <vote-buttons>
+      <h3 slot="heading">Heading Level 3</h3>
+      <span slot="button1">Yes</span>
+      <span slot="button2">No</span>
+    </vote-buttons>
+
+    <vote-buttons>
+      <h4 slot="heading">Which framework to test?</h4>
+      <span slot="button1">{{ ftl('test-frameworks-web-components') }}</span>
+      <span slot="button2">{{ ftl('test-frameworks-svelte') }}</span>
+    </vote-buttons>
+   </main>
+ {% endblock %}
+
+ {% block js %}
+   {{ js_bundle('custom-web-component') }}
+ {% endblock %}

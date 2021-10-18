@@ -6,8 +6,8 @@
 
 # Svelte tests
 svelte-heading = How is it going
-svelte-button1 = Who knows
-svelte-button2 = Friday!
+svelte-button1 = Monday
+svelte-button2 = Friday
 
 # HTML Page title
 about-learn-about-mozilla = Learn About { -brand-name-mozilla }

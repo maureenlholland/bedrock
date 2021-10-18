@@ -45,18 +45,5 @@
     <li>Minimal impact on page load and rendering speed</li>
     <li>Stable, good quality maintenance</li>
    </ul>
-   <h2>Svelte</h2>
-   <div hidden
-    id="data-svelte"
-    data-target="test-svelte"
-    data-heading="{{ ftl('svelte-heading') }}"
-    data-button1="{{ ftl('svelte-button1') }}"
-    data-button2="{{ ftl('svelte-button2') }}"
-   ></div>
-   <div id='test-svelte'></div>
   </main>
-{% endblock %}
-
-{% block js %}
-  {{ svelte_bundle('test-svelte') }}
 {% endblock %}

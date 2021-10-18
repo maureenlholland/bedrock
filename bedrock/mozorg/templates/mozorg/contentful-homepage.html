@@ -95,6 +95,7 @@
       include_cta=True,
       heading_level=2
     ) %}
+    hello
       <a href="{{ url('firefox.privacy.products') }}" class="mzp-c-button mzp-t-product">Learn more</a>
     {% endcall %}
   {% endif %}
@@ -140,7 +141,6 @@
 {% endblock %}
 
 {% block js %}
-  {{ svelte_bundle('test-svelte') }}
   {% include 'includes/contentful/js.html' %}
   {{ js_bundle('home-contentful') }}
 

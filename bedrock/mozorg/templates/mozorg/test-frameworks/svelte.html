@@ -1,0 +1,27 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends 'mozorg/about-base.html' %}
+
+{% block page_title %}{{ ftl('test-frameworks-svelte') }}{% endblock %}
+
+{% block content %}
+  <main class="mzp-l-content">
+  {# Svelte (or any JS framework)
+  - possible to have multiple targets on same page? can't duplicate id
+  - how to add array or object for use in app?
+  #}
+    <div hidden
+      id="svelte-data"
+      data-heading="{{ ftl('svelte-heading') }}"
+      data-button1="{{ ftl('svelte-button1') }}"
+      data-button2="{{ ftl('svelte-button2') }}"
+    ></div>
+    <section id='svelte-app'></section>
+  </main>
+{% endblock %}
+
+{% block js %}
+  {{ svelte_bundle('test-svelte') }}
+{% endblock %}

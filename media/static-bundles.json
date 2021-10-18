@@ -1639,12 +1639,18 @@
         "js/products/vpn/cta-change-experiment.js"
       ],
       "name": "vpn-landing-page-cta-change-experiment"
+    },
+    {
+      "files": [
+        "js/mozorg/test-frameworks/custom-component.js"
+      ],
+      "name": "custom-web-component"
     }
   ],
   "svelte" : [
     {
       "files": [
-        "svelte/main.js"
+        "svelte/apps/Vote/main.js"
       ],
       "name": "test-svelte"
     }

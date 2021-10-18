@@ -1,9 +1,9 @@
-import Test from './Test.svelte';
+import App from './App.svelte';
 
-const data = document.getElementById('data-svelte');
+const data = document.getElementById('svelte-data');
 
-const app = new Test({
-    target: document.getElementById('test-svelte'),
+const app = new App({
+    target: document.getElementById('svelte-app'),
     props: {
         heading: data.dataset.heading,
         button1: data.dataset.button1,
