@@ -1,0 +1,24 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+// configuration
+// note: this will not work with protocol's existing lib setup
+// SassError: This variable was not declared with !default in the @used module.
+// font and image paths are not declared with !default in the lib file and are not considered configurable
+@use '~@mozilla-protocol/core/protocol/css/includes/lib' with (
+    $font-path: '/media/fonts',
+    $image-path: '/media/protocol/img',
+    $brand-theme: 'firefox'
+);
+
+// forward for use in other files, this will respect the configuration above
+@forward '~@mozilla-protocol/core/protocol/css/includes/lib';
+
+// SassError: Two forwarded modules both define a variable named $brand-theme.
+// do not include variable definitions from the logo file, just the logo mixin (there is also a "hide" keyword for similar use)
+@forward '~@mozilla-protocol/core/protocol/css/components/logos/logo' show logo;
+
+// must include their own use lib statements, but will respect configuration above
+@forward 'footer';
+@forward 'header';

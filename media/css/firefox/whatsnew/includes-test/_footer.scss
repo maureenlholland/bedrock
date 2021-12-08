@@ -1,0 +1,107 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+@use '~@mozilla-protocol/core/protocol/css/includes/lib';
+@debug lib.$brand-theme;
+
+// * -------------------------------------------------------------------------- */
+// Footer overrides
+
+.c-footer {
+    background: lib.$color-white;
+    color: lib.$color-ink-80;
+
+    a:link,
+    a:visited {
+        color: lib.$color-ink-80;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: lib.$color-ink-90;
+            text-decoration: underline;
+        }
+    }
+
+    .c-footer-sections {
+        border-top: 1px solid lib.$color-light-gray-30;
+        border-bottom: 1px solid lib.$color-light-gray-30;
+        padding: lib.$layout-md 0;
+    }
+}
+
+.c-footer-list-social li {
+    a:hover,
+    a:active,
+    a:focus {
+        border-bottom-color: transparent;
+    }
+
+    a.twitter {
+        background-image: url('/media/protocol/img/icons/social/twitter/black.svg');
+    }
+
+    a.instagram {
+        background-image: url('/media/protocol/img/icons/social/instagram/black.svg');
+    }
+
+    a.youtube {
+        background-image: url('/media/protocol/img/icons/social/youtube/black.svg');
+    }
+}
+
+.c-footer-primary-logo a {
+    background-image: url('/media/protocol/img/logos/mozilla/logo-word-hor.svg');
+}
+
+.c-footer-legal {
+    a:link,
+    a:visited {
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-footer {
+        background: lib.$color-dark-gray-60;
+        color: lib.$color-white;
+
+        a:link,
+        a:visited {
+            color: lib.$color-white;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: lib.$color-white;
+            }
+        }
+
+        .c-footer-sections {
+            border-color: lib.$color-dark-gray-30;
+        }
+    }
+
+    .c-footer-list-social li {
+        a.twitter {
+            background-image: url('/media/protocol/img/icons/social/twitter/white.svg');
+        }
+
+        a.instagram {
+            background-image: url('/media/protocol/img/icons/social/instagram/white.svg');
+        }
+
+        a.youtube {
+            background-image: url('/media/protocol/img/icons/social/youtube/white.svg');
+        }
+    }
+
+    .c-footer-primary-logo a {
+        background-image: url('/media/protocol/img/logos/mozilla/logo-word-hor-white.svg');
+    }
+}

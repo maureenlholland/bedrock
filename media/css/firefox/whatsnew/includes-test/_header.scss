@@ -1,0 +1,60 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+@use '~@mozilla-protocol/core/protocol/css/includes/lib';
+@debug lib.$brand-theme;
+
+// * -------------------------------------------------------------------------- */
+// Up-to-date page header
+
+.c-page-header {
+    background: transparent;
+
+    .mzp-l-content {
+        padding-top: lib.$spacing-lg;
+        padding-bottom: lib.$spacing-lg;
+    }
+}
+
+.mzp-c-notification-bar {
+    display: none;
+    margin: lib.$layout-xs auto;
+}
+
+.is-up-to-date .mzp-c-notification-bar.up-to-date,
+.is-out-of-date .mzp-c-notification-bar.out-of-date {
+    display: block;
+}
+
+.c-page-header-inner {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.c-page-header-up-to-date {
+    margin: 0 lib.$layout-sm;
+}
+
+.c-page-header-logo-fx {
+    @include lib.image-replaced;
+    background: url(lib.$image-path + '/logos/firefox/browser/logo-word-hor.svg') no-repeat;
+    @include lib.background-size(216px, 40px);
+    width: 216px;
+    height: 40px;
+    margin: 0;
+
+    @media (prefers-color-scheme: dark) {
+        background: url(lib.$image-path + '/logos/firefox/browser/logo-word-hor-white.svg') no-repeat;
+        @include lib.background-size(216px, 40px);
+    }
+}
+
+@media #{lib.$mq-lg} {
+    .c-page-header-inner {
+        @include lib.grid-column-gap(lib.$spacing-lg);
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+    }
+}
