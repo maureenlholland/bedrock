@@ -480,9 +480,17 @@ def existing(request, token=None):
         "newsletter_languages": newsletter_languages,
         "newsletters_subscribed": already_subscribed,
         "email": user["email"],
+        "newsletter_data": json.dumps(initial),
+        "user_data": json.dumps(user),
     }
 
-    return l10n_utils.render(request, "newsletter/existing.html", context, ftl_files=FTL_FILES)
+    if request.GET.get("svelte", None) == "true":
+        # http://localhost:8000/en-US/newsletter/existing/8bf13261-de7b-4555-a70c-8d458109eebe/?svelte=true
+        template = "newsletter/existing-svelte.html"
+    else:
+        template = "newsletter/existing.html"
+
+    return l10n_utils.render(request, template, context, ftl_files=FTL_FILES)
 
 
 # Possible reasons for unsubscribing

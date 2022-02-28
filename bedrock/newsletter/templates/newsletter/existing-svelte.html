@@ -1,0 +1,41 @@
+{#
+ This Source Code Form is subject to the terms of the Mozilla Public
+ License, v. 2.0. If a copy of the MPL was not distributed with this
+ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#}
+
+{% extends 'newsletter/base.html' %}
+
+{# Template used for a user to manage their subscriptions #}
+
+{% block gtm_page_id %}data-gtm-page-id="/newsletter/existing/"{% endblock %}
+
+{# "noindex" pages should not have the canonical or hreflang tags: bug 1442331 #}
+{% block canonical_urls %}<meta name="robots" content="noindex,follow">{% endblock %}
+
+{% block body_id %}newsletter-existing{% endblock body_id %}
+
+{% block content %}
+{% if did_confirm %}
+      {% set header_type = 'confirm' %}
+    {% elif switch('newsletter-maintenance-mode')  %}
+      {% set header_type = 'maintenance' %}
+    {% else %}
+      {% set header_type = 'manage' %}
+    {% endif %}
+    <div
+      id="svelte-app"
+      data-header-type='{{ header_type }}'
+      data-form-url='{{ request.build_absolute_uri(request.path) }}'
+      data-user='{{ user_data }}'
+      data-newsletters='{{ newsletter_data }}'
+      data-ftl-subscribe='{{ ftl('newsletters-subscribe') }}'
+    >
+    </div>
+{% endblock %}
+
+{% block js %}
+  {{ js_bundle('svelte') }}
+{% endblock %}
+
+  {% block site_footer %}{% endblock %}
