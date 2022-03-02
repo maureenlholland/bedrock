@@ -12,6 +12,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const staticBundles = require('./media/static-bundles.json');
+const { readdirSync } = require('fs');
 
 function resolveBundles(fileList) {
     return fileList.map((f) => {
@@ -101,10 +102,34 @@ const jsConfig = {
     ]
 };
 
+function getSvelteApps() {
+    // go to svelte/apps folder
+    // create bundle for each main.js file named for the folder it lives in (i.e. newsletter-all)
+    return new Promise((resolve) => {
+        const apps = path.resolve(__dirname, 'media/svelte/apps');
+        const allFiles = {};
+        try {
+            const files = readdirSync(apps, { withFileTypes: true });
+            files.forEach((file) => {
+                const name = file['name'];
+                allFiles[name] = path.resolve(
+                    __dirname,
+                    'media/svelte/apps',
+                    name,
+                    'main.js'
+                );
+            });
+        } catch (err) {
+            console.error(err); // eslint-disable-line no-console
+        }
+        resolve(allFiles);
+    });
+}
+
 const svelteConfig = {
-    entry: () => path.resolve(__dirname, 'media', 'svelte/main.js'),
+    entry: () => getSvelteApps(),
     output: {
-        filename: 'js/svelte.js',
+        filename: 'js/[name].js',
         path: path.resolve(__dirname, 'assets/'),
         publicPath: '/media/'
     },

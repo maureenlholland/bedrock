@@ -1,0 +1,92 @@
+{#
+ This Source Code Form is subject to the terms of the Mozilla Public
+ License, v. 2.0. If a copy of the MPL was not distributed with this
+ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#}
+
+{% extends 'newsletter/base.html' %}
+
+{# Template used for a user to manage their subscriptions #}
+
+{% block gtm_page_id %}data-gtm-page-id="/newsletter/existing/"{% endblock %}
+
+{# "noindex" pages should not have the canonical or hreflang tags: bug 1442331 #}
+{% block canonical_urls %}<meta name="robots" content="noindex,follow">{% endblock %}
+
+{% block body_id %}newsletter-existing{% endblock body_id %}
+
+{% block content %}
+<main role="main">
+  <header class="mzp-l-content mzp-t-content-lg">
+    {% if did_confirm %}
+      {% set header_type = 'confirm' %}
+    {% elif switch('newsletter-maintenance-mode')  %}
+      {% set header_type = 'maintenance' %}
+    {% else %}
+      {% set header_type = 'manage' %}
+    {% endif %}
+  <div
+    id="svelte-newsletter-header"
+    data-header-type='{{ header_type }}'
+  >
+  </div>
+  </header>
+
+  <div class="mzp-l-content">
+
+    <section>
+      {% if formset and not switch('newsletter-maintenance-mode') %}
+      {# using uri builder instead of named URL to easily maintain user newsletter token #}
+      <form method="post" action="{{ request.build_absolute_uri(request.path) }}" id="existing-newsletter-form"
+        data-initial-newsletters='{{ newsletters_subscribed }}'>
+        {{ formset.management_form }}
+
+        <div class="c-column">
+          <div class="c-column-content" id="basic-settings">
+            <div
+              id="svelte-newsletter-basic-settings"
+              data-form-url='{{ request.build_absolute_uri(request.path) }}'
+              data-user='{{ user_data }}'
+            >
+            </div>
+
+            <aside>
+              <p>{{ ftl('newsletters-many-of-our-communications', url='https://support.mozilla.org/kb/managing-account-data') }}</p>
+
+              <p>{{ ftl('newsletters-to-get-access-to-the-whole', url=url('firefox.accounts')) }}</p>
+
+              <p>{{ ftl('newsletters-there-are-many-ways-to', url=url('mozorg.about.forums.forums')) }}</p>
+            </aside>
+          </div> <!-- close #basic-settings -->
+        </div>
+
+        <div class="c-column">
+          <div class="c-column-content">
+            <div
+              id="svelte-newsletter-subscription-form"
+              data-form-url='{{ request.build_absolute_uri(request.path) }}'
+              data-newsletters='{{ newsletter_data }}'
+              data-ftl-subscribe="{{ ftl('newsletters-subscribe') }}"
+            >
+            </div>
+            <input
+                type="submit"
+                value={{ ftl('newsletters-save-preferences') }}
+                class="mzp-c-button"
+            />
+          </div>
+        </div>
+      </form>
+      {% endif %}
+    </section>
+  </div>
+</main>
+{% endblock %}
+
+{% block js %}
+  {{ js_bundle('newsletter-header') }}
+  {{ js_bundle('newsletter-basic-settings') }}
+  {{ js_bundle('newsletter-subscription-form') }}
+{% endblock %}
+
+  {% block site_footer %}{% endblock %}

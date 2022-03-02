@@ -16,26 +16,26 @@
 {% block body_id %}newsletter-existing{% endblock body_id %}
 
 {% block content %}
-{% if did_confirm %}
-      {% set header_type = 'confirm' %}
-    {% elif switch('newsletter-maintenance-mode')  %}
-      {% set header_type = 'maintenance' %}
-    {% else %}
-      {% set header_type = 'manage' %}
-    {% endif %}
-    <div
-      id="svelte-app"
-      data-header-type='{{ header_type }}'
-      data-form-url='{{ request.build_absolute_uri(request.path) }}'
-      data-user='{{ user_data }}'
-      data-newsletters='{{ newsletter_data }}'
-      data-ftl-subscribe='{{ ftl('newsletters-subscribe') }}'
-    >
-    </div>
+  {% if did_confirm %}
+    {% set header_type = 'confirm' %}
+  {% elif switch('newsletter-maintenance-mode')  %}
+    {% set header_type = 'maintenance' %}
+  {% else %}
+    {% set header_type = 'manage' %}
+  {% endif %}
+  <div
+    id="svelte-app"
+    data-header-type='{{ header_type }}'
+    data-form-url='{{ request.build_absolute_uri(request.path) }}'
+    data-user='{{ user_data }}'
+    data-newsletters='{{ newsletter_data }}'
+    data-ftl-subscribe='{{ ftl('newsletters-subscribe') }}'
+  >
+  </div>
 {% endblock %}
 
 {% block js %}
-  {{ js_bundle('svelte') }}
+  {{ js_bundle('newsletter-all') }}
 {% endblock %}
 
   {% block site_footer %}{% endblock %}

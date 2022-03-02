@@ -1,7 +1,7 @@
 <script>
-    import Header from './components/Header.svelte';
-    import SubscriptionsForm from './components/SubscriptionsForm.svelte';
-    import BasicSettings from './components/BasicSettings.svelte';
+    import Header from '../../components/Header.svelte';
+    import SubscriptionsForm from '../../components/SubscriptionsForm.svelte';
+    import BasicSettings from '../../components/BasicSettings.svelte';
 
     export let headerType;
     export let formUrl;

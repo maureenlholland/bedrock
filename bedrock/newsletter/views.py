@@ -487,6 +487,9 @@ def existing(request, token=None):
     if request.GET.get("svelte", None) == "true":
         # http://localhost:8000/en-US/newsletter/existing/8bf13261-de7b-4555-a70c-8d458109eebe/?svelte=true
         template = "newsletter/existing-svelte.html"
+    elif request.GET.get("multi-svelte", None) == "true":
+        # http://localhost:8000/en-US/newsletter/existing/8bf13261-de7b-4555-a70c-8d458109eebe/?multi-svelte=true
+        template = "newsletter/existing-multi-svelte.html"
     else:
         template = "newsletter/existing.html"
 
