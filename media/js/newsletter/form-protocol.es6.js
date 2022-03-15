@@ -118,26 +118,21 @@
         const fmt = fmtText.checked ? fmtText.value : fmtHtml.value;
         const email = document.getElementById('id_email').value;
 
-        // Get newsletters by hidden id or checked inputs
+        // Get newsletters by checked inputs
         let newsletters = '';
-        const singleNewsletterForm = document.getElementById('id_newsletters');
-        if (singleNewsletterForm) {
-            newsletters = singleNewsletterForm.value;
-        } else {
-            const checkedNewsletters = Array.from(
-                document.querySelectorAll("input[name='newsletter-id']:checked")
-            ).map((newsletter) => newsletter.value);
+        const checkedNewsletters = Array.from(
+            document.querySelectorAll("input[name='newsletters']:checked")
+        ).map((newsletter) => newsletter.value);
 
-            // confirm at least one newsletter is checked
-            if (checkedNewsletters.length === 0) {
-                const errorString = document
-                    .getElementById('newsletter-error-strings')
-                    .getAttribute('data-form-checkboxes-error');
-                errorArray.push(errorString);
-                return newsletterError();
-            }
-            newsletters = checkedNewsletters.join(',');
+        // confirm at least one newsletter is checked
+        if (checkedNewsletters.length === 0) {
+            const errorString = document
+                .getElementById('newsletter-error-strings')
+                .getAttribute('data-form-checkboxes-error');
+            errorArray.push(errorString);
+            return newsletterError();
         }
+        newsletters = checkedNewsletters;
         const privacy = document.querySelector('input[name="privacy"]:checked')
             ? '&privacy=true'
             : '';
