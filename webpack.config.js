@@ -13,6 +13,8 @@ const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const staticBundles = require('./media/static-bundles.json');
+const { readdirSync } = require('fs');
+const sveltePreprocess = require('svelte-preprocess');
 
 function resolveBundles(fileList) {
     return fileList.map((f) => {
@@ -103,6 +105,78 @@ const jsConfig = {
     ]
 };
 
+function getSvelteApps() {
+    // go to svelte/apps folder
+    // create bundle for each main.js file named for the folder it lives in (i.e. newsletter-all)
+    return new Promise((resolve) => {
+        const apps = path.resolve(__dirname, 'media/svelte/apps');
+        const allFiles = {};
+        try {
+            const files = readdirSync(apps, { withFileTypes: true });
+            files.forEach((file) => {
+                const name = file['name'];
+                allFiles[name] = path.resolve(
+                    __dirname,
+                    'media/svelte/apps',
+                    name,
+                    'main.js'
+                );
+            });
+        } catch (err) {
+            console.error(err); // eslint-disable-line no-console
+        }
+        resolve(allFiles);
+    });
+}
+
+// should consider emitting CSS: https://github.com/sveltejs/svelte-loader#extracting-css
+const svelteConfig = {
+    entry: () => getSvelteApps(),
+    output: {
+        filename: 'js/svelte-[name].js',
+        path: path.resolve(__dirname, 'assets/'),
+        publicPath: '/media/'
+    },
+    resolve: {
+        // see below for an explanation
+        alias: {
+            svelte: path.resolve('node_modules', 'svelte')
+        },
+        extensions: ['.mjs', '.js', '.svelte'],
+        mainFields: ['svelte', 'browser', 'module', 'main']
+    },
+    module: {
+        rules: [
+            {
+                test: /\.svelte$/,
+                use: {
+                    loader: 'svelte-loader',
+                    options: {
+                        preprocess: sveltePreprocess({
+                            scss: {
+                                renderSync: true,
+                                includePaths: ['media', 'node_modules'],
+                                prependData: `@import '${path.resolve(
+                                    'node_modules',
+                                    '@mozilla-protocol/core/protocol/css/includes/lib'
+                                )}';`
+                            }
+                        })
+                    }
+                }
+            },
+            {
+                // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
+                test: /node_modules\/svelte\/.*\.mjs$/,
+                resolve: {
+                    fullySpecified: false
+                }
+            }
+        ]
+    },
+    plugins: []
+};
+
 const cssConfig = {
     entry: () => getCSSBundles(),
     output: {
@@ -167,6 +241,7 @@ const browserSync = new BrowserSyncPlugin({
 });
 
 jsConfig.plugins.push(browserSync);
+svelteConfig.plugins.push(browserSync);
 cssConfig.plugins.push(browserSync);
 
-module.exports = [jsConfig, cssConfig];
+module.exports = [jsConfig, svelteConfig, cssConfig];

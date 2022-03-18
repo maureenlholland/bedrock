@@ -4,7 +4,14 @@
   file, You can obtain one at https://mozilla.org/MPL/2.0/.
 #}
 
+
+{% if show_demo == 'heading' %}
+{% extends 'products/vpn/resource-center/base-article-svelte-heading.html' %}
+{% elif show_demo == 'vote' %}
+{% extends 'products/vpn/resource-center/base-article-svelte-vote.html' %}
+{% else %}
 {% extends 'products/vpn/resource-center/base-article.html' %}
+{% endif %}
 
 {% block article_category %}
   {% if info.category %}{{ info.category }}{% endif %}

@@ -19,7 +19,9 @@
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "svelte": "^3.46.4",
+    "svelte-loader": "^3.1.2"
   },
   "repository": {
     "type": "git",
@@ -50,6 +52,7 @@
     "stylelint": "^14.6.1",
     "stylelint-config-standard-scss": "^3.0.0",
     "svgo": "^2.7.0",
+    "svelte-preprocess": "^4.10.4",
     "tinypng-cli": "^0.0.7"
   },
   "scripts": {

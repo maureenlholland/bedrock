@@ -1,0 +1,48 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+$font-path: '/media/fonts';
+$image-path: '/media/protocol/img';
+
+@import '~@mozilla-protocol/core/protocol/css/includes/lib';
+
+.vpn-c-vote {
+    margin-top: $layout-xl;
+    text-align: center;
+
+    .vpn-c-vote-btn-container {
+        @include bidi(((margin-right, $layout-lg, margin-left, $layout-lg),));
+        position: relative;
+
+        .vpn-c-vote-btn {
+            background: none;
+            border: none;
+            color: $color-moz-dark-gray;
+            cursor: pointer;
+            fill: currentColor;
+            height: $layout-sm + 6px;
+            width: $layout-md - 6px;
+
+            &.down {
+                @include bidi(((margin-left, $spacing-sm, margin-right, $spacing-sm),));
+                position: absolute;
+                top: 13px;
+            }
+
+            &[aria-pressed='true'] {
+                color: $color-blue-50;
+                fill: currentColor;
+            }
+
+            span {
+                @include visually-hidden;
+            }
+
+            svg,
+            path {
+                pointer-events: none;
+            }
+        }
+    }
+}

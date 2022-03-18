@@ -1024,6 +1024,12 @@
     },
     {
       "files": [
+        "css/products/vpn/resource-center-vote.scss"
+      ],
+      "name": "vpn-resource-center-vote"
+    },
+    {
+      "files": [
         "css/pocket/style.scss",
         "css/pocket/components/platforms.scss"
       ],
@@ -1713,6 +1719,8 @@
     },
     {
       "files": [
+        "js/base/mozilla-fxa.js",
+        "js/base/mozilla-fxa-init.js",
         "js/products/vpn/resource-center-article.es6.js"
       ],
       "name": "vpn-resource-center-article"

@@ -218,7 +218,7 @@ def resource_center_article_view(request, slug):
             translations=active_locales_for_this_article,
         )
 
-    ctx = {}
+    ctx = {"show_demo": request.GET.get("demo", None)}
     try:
         article = ContentfulEntry.objects.get_entry_by_slug(
             slug=slug,
