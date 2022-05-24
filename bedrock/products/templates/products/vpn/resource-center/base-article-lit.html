@@ -1,0 +1,77 @@
+{#
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#}
+
+{% from 'macros-protocol.html' import split %}
+
+{% extends "products/vpn/base.html" %}
+
+{% block page_css %}
+  {{ css_bundle('vpn-resource-center')}}
+{% endblock page_css %}
+
+{% block page_title%}{% block article_title %}{% endblock article_title %}{% endblock page_title%}
+
+{% block content %}
+<nav class="mzp-c-breadcrumb">
+  <ol class="mzp-c-breadcrumb-list">
+    <li class="mzp-c-breadcrumb-item">
+      <a href="{{ url('products.vpn.resource-center.landing') }}">{{ ftl('vpn-resource-center-title') }}</a>
+    </li>
+    <li class="mzp-c-breadcrumb-item">
+      {{ self.article_title() }}
+    </li>
+  </ol>
+</nav>
+<div class="vpn-article-container">
+  <div class="mzp-l-content mzp-t-content-md">
+      <article class="mzp-c-article vpn-article">
+        {# Categories will be used at some point but not yet #}
+        {# <p class="vpn-article-category">{% block article_category %}{{ self.article_category().capitalize() }}{% endblock %}</p> #}
+        <h2>{{ self.article_title() }}</h2>
+        {% block vpn_article %}{% endblock vpn_article %}
+      </article>
+    </div>
+    <!-- LIT DEMO BEGINS -->
+    <my-element article="{{ self.article_title() }}">
+      <h3 slot="title">{{ ftl('vpn-resource-center-was-this-article') }}</h3>
+    </my-element>
+    <!-- LIT DEMO ENDS -->
+  <div>
+
+  {% if related_articles %}
+
+  <div class="mzp-l-content mzp-l-card-third">
+    <hr class="vpn-article-hr" />
+    <h3>{{ ftl('vpn-resource-center-related-posts') }}</h3>
+    <div class="mzp-l-card-third">
+      {% for article in related_articles %}
+        {% include "products/vpn/resource-center/includes/vpn-article-card.html"%}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% call split (
+  image_url='img/products/vpn/resource-center/resource_center_split_2_2x.jpg',
+  block_class='mzp-t-content-lg',
+  ) %}
+    <h2 class="resource-center-cta-title">{{ ftl('vpn-resource-center-obsessed-with') }}</h2>
+       {{ vpn_product_referral_link(
+          referral_id='vpn-resource-center-article',
+          page_anchor='#pricing',
+          link_text=ftl('vpn-resource-center-get-mozilla-vpn'),
+          class_name='mzp-c-button mzp-t-product',
+          optional_attributes= {
+            'data-cta-text' : 'Get Mozilla VPN',
+            'data-cta-type' : 'button',
+          }
+        ) }}
+  {% endcall %}
+{% endblock content %}
+
+{% block js %}
+{{ js_bundle("vpn-resource-center-article-lit")}}
+{% endblock js %}

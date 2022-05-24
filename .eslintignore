@@ -2,3 +2,4 @@ media/js/libs/**/*.js
 media/js/ie/libs/**/*.js
 media/js/careers/libs/*.js
 media/svelte/**/*.js
+media/js/products/vpn/resource-center-article-lit.es6.js

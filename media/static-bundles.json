@@ -1756,6 +1756,12 @@
         "js/privacy/data-preferences.es6.js"
       ],
       "name": "privacy-data-preferences"
+    },
+    {
+      "files": [
+        "js/products/vpn/resource-center-article-lit.es6.js"
+      ],
+      "name": "vpn-resource-center-article-lit"
     }
   ]
 }
