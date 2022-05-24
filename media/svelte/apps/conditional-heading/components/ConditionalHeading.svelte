@@ -17,6 +17,7 @@
     window.Mozilla.Client.getFxaDetails(getFxaState);
 
     function getFxaState(details) {
+        console.log(details)
         if (details.firefox && details.setup) {
             userState = 'signed-in';
         } else if (details.firefox) {

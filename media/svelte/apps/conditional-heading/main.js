@@ -4,12 +4,10 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import ConditionalHeading from '../../components/ConditionalHeading.svelte';
-
-const target = document.getElementById('svelte-conditional-heading');
+import ConditionalHeading from './components/ConditionalHeading.svelte';
 
 const app = new ConditionalHeading({
-    target: target
+    target: document.getElementById('svelte-conditional-heading')
 });
 
 export default app;

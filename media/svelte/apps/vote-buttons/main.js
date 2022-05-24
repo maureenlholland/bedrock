@@ -4,7 +4,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import VoteButtons from '../../components/VoteButtons.svelte';
+import VoteButtons from './components/VoteButtons.svelte';
 
 const target = document.getElementById('svelte-vote-buttons');
 
