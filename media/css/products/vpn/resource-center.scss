@@ -134,3 +134,12 @@ $image-path: '/media/protocol/img';
 .vpn-article-hr {
     margin: $spacing-xl 0;
 }
+
+my-element {
+    --my-background: #{$color-blue-50};
+    --my-color: #fff;
+
+    .sr-only {
+        @include visually-hidden;
+    }
+}
