@@ -7,141 +7,92 @@
 $image-path: '/media/protocol/img';
 
 .platform-footer {
-    background-color: #f9f9fa;
+    background-color: $color-marketing-gray-10;
     font-family: $font-sans;
-    padding-top: $spacing-xl;
 
-    .footer-navigation {
-        display: flex;
-        flex-flow: column-reverse wrap;
-        margin: 0 auto;
-        max-width: $screen-lg;
-        width: 100%;
-        height: auto;
+    .mzp-l-content {
+        max-width: $content-sm;
 
         @media #{$mq-md} {
-            flex-flow: column nowrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 80px 0;
+            max-width: $content-xl;
+        }
+    }
+
+    &-copyright {
+        @include text-body-sm;
+        color: $color-text-primary;
+        text-align: center;
+    }
+}
+
+.footer-navigation {
+    &-list {
+        @include text-body-md;
+        color: $color-text-primary;
+        columns: 2;
+        padding: 0;
+
+        @media #{$mq-md} {
+            columns: initial;
+            text-align: center;
+            padding-right: $layout-md;
+            padding-left: $layout-md;
+        }
+    }
+
+    &-list-item {
+        @media #{$mq-md} {
+            display: inline-block;
         }
 
-        .footer-navigation-list {
-            @include text-body-md;
+        a {
             color: $color-text-primary;
-            display: flex;
-            flex-flow: column wrap;
-            height: 220px;
-            justify-content: center;
-            margin: 0 auto $layout-xs;
-            max-width: 500px;
-            width: 100%;
+            text-decoration: none;
+            padding: $spacing-xs $spacing-sm;
+            display: inline-block;
 
-            .footer-navigation-list-item {
-                margin: 0 0 $spacing-md;
-                cursor: pointer;
-
-                a {
-                    color: $color-text-primary;
-                    text-decoration: none;
-                    margin: $spacing-lg $spacing-xs;
-
-                    &:hover,
-                    &:active,
-                    &:focus {
-                        text-decoration: underline;
-                    }
-                }
-            }
-
-            @media #{$mq-md} {
-                flex-direction: row;
-                height: auto;
-                max-width: 100%;
-
-                .footer-navigation-list-item {
-                    margin: 0 $spacing-sm 0;
-                }
-            }
-
-            @media #{$mq-lg} {
-                margin-right: $layout-xs;
+            &:hover,
+            &:active,
+            &:focus {
+                text-decoration: underline;
             }
         }
     }
 }
 
-.platform-footer-socials { /* stylelint-disable-line selector-class-pattern */
-    padding: 0 $spacing-md;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.socials-list {
+    padding: $spacing-sm;
+    text-align: center;
 
-    .footer-socials-wrapper {
-        display: flex;
-        margin-bottom: $spacing-md;
+    li + li {
+        margin-left: $spacing-md;
     }
 
-    .socials-list {
-        margin: 0;
-        padding: 0;
-        display: flex;
+    &-item {
+        display: inline-block;
+    }
+}
 
-        .socials-list-item {
-            margin-right: $spacing-xs;
+.svg-social {
+    fill: currentColor;
+    color: $color-text-primary;
+    width: $layout-sm;
+    height: $layout-sm;
+    transition: color 100ms ease-in-out;
 
-            .socials-list-item-link {
-                background-repeat: no-repeat;
-                background-size: 20px 20px;
-                cursor: pointer;
-                display: block;
-                height: 20px;
-                width: 20px;
-
-                .svg-social {
-                    fill: currentColor;
-                    display: block;
-                    color: $color-text-primary;
-                    width: 30px;
-                    height: 30px;
-                    transition: color 100ms ease-in-out;
-
-                    &.twitter {
-                        &:hover,
-                        &:focus,
-                        &:active {
-                            color: $color-twitter-blue;
-                        }
-                    }
-
-                    &.facebook {
-                        &:hover,
-                        &:focus,
-                        &:active {
-                            color: $color-facebook-blue;
-                        }
-                    }
-                }
-
-                span {
-                    @include visually-hidden;
-                }
-
-                &.twitter {
-                    margin-right: $spacing-lg;
-                }
-            }
+    &.twitter {
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-twitter-blue;
         }
     }
 
-    .platform-footer-copyright {
-        @include text-body-md;
-        color: $color-text-primary;
-        font-weight: 300;
-        text-align: left;
-
-        @media #{$mq-md} {
-            text-align: right;
+    &.facebook {
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-facebook-blue;
         }
     }
 }
