@@ -2,24 +2,34 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+$image-path: '/media/protocol/img';
+$pocket-image-path: '/media/img/pocket';
+
+@import '~@mozilla-protocol/core/protocol/css/includes/lib';
+@import '~@mozilla-protocol/core/protocol/css/components/logos/wordmark';
+@import '~@mozilla-protocol/core/protocol/css/components/logos/wordmark-product-pocket';
+
 @import '../utils/variables';
 @import './mobile-nav';
-
-$pocket-image-path: '/media/img/pocket';
 
 .pocket-header {
     width: 100%;
     background: $color-white;
     box-shadow: $box-shadow-sm;
     border-bottom: 1px solid $color-divider;
+    padding: $layout-2xs;
+
+    .mzp-t-product-pocket {
+        margin-bottom: 0;
+    }
 
     .global-nav-container {
-        padding: 0 $spacing100;
-        height: 64px;
         display: flex;
         align-items: center;
-        max-width: 1168px;
-        margin: 0 auto;
+    }
+
+    @media #{$mq-md} {
+        padding: 0;
     }
 }
 
@@ -58,64 +68,6 @@ $pocket-image-path: '/media/img/pocket';
 
     @media #{$mq-md} {
         display: none;
-    }
-}
-
-.pocket-logo {
-    display: inline-block;
-    position: relative;
-    margin-left: 8px;
-    margin-right: 0;
-    padding: 8px 0;
-    line-height: 1;
-
-    &:focus {
-        outline: none;
-
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            bottom: -2px;
-            right: -2px;
-            border: 2px solid $color-action-primary;
-            border-radius: 4px;
-        }
-    }
-
-    &:active::before,
-    &:hover::before {
-        display: none;
-    }
-
-    .pocket-logo-svg {
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-image: url('#{$pocket-image-path}/pocket-logo-light-mode.svg');
-        width: 94px;
-        height: 24px;
-
-        span {
-            @include visually-hidden;
-        }
-    }
-
-    &.logged-in .logo {
-        display: none;
-    }
-
-    @media #{$mq-md} {
-        margin-right: 56px;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
-
-    @media #{$mq-lg} {
-        margin-right: 96px;
     }
 }
 

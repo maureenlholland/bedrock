@@ -7,7 +7,7 @@
 {% include 'pocket/includes/mobile-nav.html' %}
 
 <header class="pocket-header">
-    <nav class="global-nav-container">
+    <nav class="global-nav-container mzp-l-content mzp-t-content-xl mzp-t-content-nospace">
         <button class="global-nav-mobile-menu-btn inline" aria-labelledby="mobile-menu-icon-title" aria-describedby="mobile-menu-icon-description">
             <svg
                 class="hamburger-btn"
@@ -26,10 +26,8 @@
                 <desc id="mobile-menu-icon-description">{{ ftl('pocket-nav-open-menu-desc') }}</desc>
             </svg>
         </button>
-        <a id="pocket-logo-nav" class="pocket-logo" href="https://getpocket.com/explore?src=navbar">
-            <div class="pocket-logo-svg logo">
-                <span>{{ ftl('pocket-nav-logo-text') }}</span>
-            </div>
+        <a href="https://getpocket.com/explore?src=navbar">
+            <div class="mzp-c-wordmark mzp-t-wordmark-sm mzp-t-product-pocket">{{ ftl('pocket-nav-logo-text') }}</div>
         </a>
         <div class="page-navigation" aria-label="{{ ftl('pocket-nav-aria-label') }}">
             <ul class="page-navigation-list links">

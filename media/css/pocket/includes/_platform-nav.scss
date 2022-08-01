@@ -2,7 +2,11 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+$image-path: '/media/protocol/img';
+
 @import '~@mozilla-protocol/core/protocol/css/includes/lib';
+@import '~@mozilla-protocol/core/protocol/css/components/logos/wordmark';
+@import '~@mozilla-protocol/core/protocol/css/components/logos/wordmark-product-pocket';
 
 .pocket-header.platform {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -10,31 +14,22 @@
 }
 
 .platform-header {
-    align-items: center;
     display: flex;
-    height: 74px;
+    justify-content: center;
     margin: 0 auto;
-    max-width: $screen-lg;
-    padding: 0 $spacing-md;
+    padding: $layout-2xs;
 
-    .pocket-logo {
-        margin: 0 auto;
+    .mzp-t-product-pocket {
+        background-position: center; /* note: this will shortly be possible in Protocol with .mzp-l-wordmark-center-on-sm-md */
+        margin-bottom: 0;
+    }
 
-        .pocket-logo-svg {
-            background-image: url('/media/img/pocket/pocket-logo-light-mode.svg');
-            background-repeat: no-repeat;
-            background-size: contain;
-            height: 38px;
-            width: 151px;
+    @media screen and #{$mq-md} {
+        padding-right: $layout-lg;
+        padding-left: $layout-lg;
 
-            @media #{$mq-md} {
-                width: 174px;
-                height: 32px;
-            }
-
-            span {
-                @include visually-hidden;
-            }
+        .mzp-t-product-pocket {
+            @include bidi(((background-position, top left, top right),));
         }
     }
 
@@ -94,6 +89,7 @@
             }
         }
         @media #{$mq-md} {
+            align-items: center;
             display: flex;
             justify-content: flex-end;
             flex-grow: 2;
