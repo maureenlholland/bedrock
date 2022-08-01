@@ -23,14 +23,14 @@ $pocket-image-path: '/media/img/pocket';
         margin-bottom: 0;
     }
 
-    .global-nav-container {
-        display: flex;
-        align-items: center;
-    }
-
     @media #{$mq-md} {
         padding: 0;
     }
+}
+
+.global-nav-container {
+    display: flex;
+    align-items: center;
 }
 
 .global-nav-mobile-menu-btn {
@@ -90,14 +90,14 @@ $pocket-image-path: '/media/img/pocket';
     line-height: 1;
     white-space: nowrap;
 
-    .page-navigation-list {
+    &-list {
         @include text-body-md;
         margin: 0;
         padding: 0;
         list-style-type: none;
         display: none;
 
-        .page-navigation-list-item {
+        &-list-item {
             display: inline-block;
             margin: 0;
             padding: 0;
