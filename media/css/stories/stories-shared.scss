@@ -113,7 +113,7 @@ $image-path: '/media/protocol/img';
     position: relative;
 
     &.article-width {
-        @include article-width-full;
+        // @include article-width-full;
         margin: $layout-md $spacing-lg;
 
         &.center {
@@ -129,7 +129,7 @@ $image-path: '/media/protocol/img';
     }
 
     &.article-half-width {
-        grid-column: 4 / 7;
+        // grid-column: 4 / 7;
         float: left;
     }
 

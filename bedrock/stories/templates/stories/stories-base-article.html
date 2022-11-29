@@ -74,16 +74,18 @@
 {% block content %}
   <article class="c-article-wrapper" {% if credits %}style="--sidebar-width: 20ch"{% endif %}>
       <header class="c-stories-article-header">
-        {% if featured %}<p class="is-featured">Featured Article</p>{% endif%}
-        <h1 class="c-stories-article-title">{% block article_title %}{% endblock %}</h1>
-        <aside class="c-stories-article-metadata">
-          <div class="published">
-            <p>published <time datetime="{% block publish_date %}{% endblock %}">{% block publish_date_formatted %}{% endblock %}</time></p>
-          </div>
-          <div>
-            <p>value <span>{% block article_collection %}Connection{% endblock %}</span></p>
-          </div>
-        </aside>
+        <div class="c-stories-article-header-wrapper">
+          {% if featured %}<p class="is-featured">Featured Article</p>{% endif%}
+          <h1 class="c-stories-article-title">{% block article_title %}{% endblock %}</h1>
+          <aside class="c-stories-article-metadata">
+            <div class="published">
+              <p>published <time datetime="{% block publish_date %}{% endblock %}">{% block publish_date_formatted %}{% endblock %}</time></p>
+            </div>
+            <div>
+              <p>value <span>{% block article_collection %}Connection{% endblock %}</span></p>
+            </div>
+          </aside>
+        </div>
       </header>
       {% if credits %}
         <aside class="c-stories-article-credits">
