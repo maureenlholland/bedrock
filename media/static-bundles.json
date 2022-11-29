@@ -1248,7 +1248,7 @@
     },
     {
       "files": [
-        "css/stories/stories-article.scss"
+        "css/stories/stories-article-refactor.scss"
       ],
       "name": "mozilla-stories-article"
     },
