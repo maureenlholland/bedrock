@@ -72,9 +72,8 @@
 
 
 {% block content %}
-  <article class="c-article-wrapper">
-    <section class="c-stories-article-header">
-      <div class="c-stories-article-header-container">
+  <article class="c-article-wrapper" {% if credits %}style="--sidebar-width: 20ch"{% endif %}>
+      <header class="c-stories-article-header">
         {% if featured %}<p class="is-featured">Featured Article</p>{% endif%}
         <h1 class="c-stories-article-title">{% block article_title %}{% endblock %}</h1>
         <aside class="c-stories-article-metadata">
@@ -85,41 +84,36 @@
             <p>value <span>{% block article_collection %}Connection{% endblock %}</span></p>
           </div>
         </aside>
-      </div>
-    </section>
-    <section class="c-stories-article-body">
-      <div class="c-stories-article-content">
-        {% if credits %}
-        <div class="stories-max-width-wrapper">
-          <aside class="c-stories-article-credits">
-            <h2>Article credits</h2>
-            <div class="article-credits-wrapper">
+      </header>
+      {% if credits %}
+        <aside class="c-stories-article-credits">
+          <h2>Article credits</h2>
+          <div class="article-credits-wrapper">
+          {% for credit in credits %}
+            <figure class="c-stories-image credit">
+              {{ image(
+                url=credit.image,
+                width=114,
+                height=131,
+                include_highres=True,
+              )}}
+              <figcaption class="credit-name">{{ credit.name }}</figcaption>
+              <figcaption class="credit-position">{{ credit.title }}</figcaption>
+              {% if credit.photo_credit %}<figcaption class="credit-photo-credit">{{ credit.photo_credit }}</figcaption>{% endif %}
+            </figure>
+          {% endfor %}
+            <p class="credits-mobile">
             {% for credit in credits %}
-
-              <figure class="c-stories-image credit">
-                {{ image(
-                  url=credit.image,
-                  width=114,
-                  height=131,
-                  include_highres=True,
-                )}}
-                <figcaption class="credit-name">{{ credit.name }}</figcaption>
-                <figcaption class="credit-position">{{ credit.title }}</figcaption>
-                {% if credit.photo_credit %}<figcaption class="credit-photo-credit">{{ credit.photo_credit }}</figcaption>{% endif %}
-              </figure>
+              {{credit.name }}{% if not loop.last %}, {% endif %}
             {% endfor %}
-              <p class="credits-mobile">
-              {% for credit in credits %}
-                {{credit.name }}{% if not loop.last %}, {% endif %}
-              {% endfor %}
-              </p>
-            </div>
-          </aside>
-        {% endif %}
+            </p>
+          </div>
+        </aside>
+      {% endif %}
+      <section class="c-stories-article-content">
         <h2 class="c-stories-article-subtitle">{% block article_subtitle %}{% endblock %}</h2>
-      </div>
-      {% block article_content %}{% endblock %}
-      </div>
+        {% block article_content %}{% endblock %}
+      </section>
       <section class="c-stories-social-share">
         <ul class="social-share-list">
           <li class="social-share-item"><a target="_blank" href="https://twitter.com/share?url=http://www.mozilla.org{{ request.path }}&text={{ self.article_title()|urlencode  }}" class="twitter">Twitter</a></li>

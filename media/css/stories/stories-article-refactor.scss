@@ -8,3 +8,16 @@ $image-path: '/media/protocol/img';
 @import '~@mozilla-protocol/core/protocol/css/includes/lib';
 @import '~@mozilla-protocol/core/protocol/css/components/breadcrumb';
 @import 'includes/lib';
+
+:root {
+    --sidebar-width: 0;
+    --max-width: 1200px;
+}
+
+.c-article-wrapper {
+    display: grid;
+
+    @media (min-width: 767px) {
+        grid-template-columns: 1fr var(--sidebar-width) calc(var(--max-width) - var(--sidebar-width)) 1fr;
+    }
+}
