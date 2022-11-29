@@ -11,13 +11,29 @@ $image-path: '/media/protocol/img';
 
 :root {
     --sidebar-width: 0;
-    --max-width: 1200px;
+    --max-width: 1000px;
 }
 
 .c-article-wrapper {
     display: grid;
+}
 
-    @media (min-width: 767px) {
+@media (min-width: 767px) {
+    .c-article-wrapper {
         grid-template-columns: 1fr var(--sidebar-width) calc(var(--max-width) - var(--sidebar-width)) 1fr;
+    }
+
+    .c-stories-article-header {
+        grid-column: 2 / 4;
+    }
+
+    .c-stories-article-credits {
+        grid-column: 2 / 3;
+    }
+
+    .c-stories-article-content,
+    .c-stories-social-share,
+    .c-stories-related {
+        grid-column: 3 / 4;
     }
 }
